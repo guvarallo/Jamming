@@ -2,7 +2,7 @@
 
 It uses Spotify's API to search for songs, albuns or artists, and create your own playlist.
 
-Test it live at: https://spurious-moon.surge.sh/ 
+Test it live at: https://jammingcode-app.surge.sh/ 
 
 ## Getting Started
 
