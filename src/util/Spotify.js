@@ -1,7 +1,7 @@
 import clientIdConfig from './ClientId';
 
 const clientId = clientIdConfig.clientId;
-const redirectUri = 'http://spurious-moon.surge.sh';
+const redirectUri = 'https://spurious-moon.surge.sh/';
 
 let accessToken;
 
@@ -53,21 +53,24 @@ const Spotify = {
     }
 
     const token = this.getAccessToken();
-    const headers = {Authorization: `Bearer ${token}`};
+    const headers = {
+      Authorization: `Bearer ${token}`,
+      'Content-Type': 'application/json'
+    };
     let id;
     
     return fetch(`https://api.spotify.com/v1/me`, {headers: headers})
             .then(response => response.json())
             .then(jsonResponse => {
               id = jsonResponse.id;
-              return fetch(`https://api.spotify.com//v1/users/${id}/playlists`, {
+              return fetch(`https://api.spotify.com/v1/users/${id}/playlists`, {
                 headers: headers,
                 method: 'POST',
                 body: JSON.stringify({name: name})
               }).then(response => response.json())
                 .then(jsonResponse => {
                   const playlistId = jsonResponse.id;
-                  return fetch(`https://api.spotify.com/v1/users/${id}/playlists/${playlistId}/tracks`, {
+                  return fetch(`https://api.spotify.com/v1/playlists/${playlistId}/tracks`, {
                     headers: headers,
                     method: 'POST',
                     body: JSON.stringify({uris: uris})
