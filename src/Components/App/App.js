@@ -29,10 +29,12 @@ function App() {
 
   function savePlaylist() {
     const trackUris = playlistTracks.map(track => track.uri);
-    Spotify.savePlaylist(playlistName, trackUris).then(() => {
+    Spotify.savePlaylist(playlistName, trackUris)
+    .then(() => {
       setPlaylistName('New Playlist');
       setPlaylistTracks([]);
-    });
+    })
+    .then(alert('Playlist successfully saved to your library!'));
   }
 
   function search(term) {

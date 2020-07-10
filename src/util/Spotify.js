@@ -1,7 +1,7 @@
 import clientIdConfig from './ClientId';
 
 const clientId = clientIdConfig.clientId;
-const redirectUri = 'http://spurious-moon.surge.sh';
+const redirectUri = 'http://jammingcode-app.surge.sh';
 
 let accessToken;
 
