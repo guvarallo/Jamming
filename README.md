@@ -12,7 +12,8 @@ Test it live at: https://spurious-moon.surge.sh/
 
 ### Prerequisites
 
-You will need to generate a Client ID at https://developer.spotify.com/ 
+1. You will need to generate a Client ID at https://developer.spotify.com/ 
+2. If you want to deploy, you will need to change the redirectUri in Spotify.js file to your own domain. To just test it locally, change to localhost:3000. You will also need to add your domain in the Spotify settings of your app, under Redirect URIs, in order to work correctly.
 
 ## Built With
 
