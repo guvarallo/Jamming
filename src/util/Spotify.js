@@ -1,7 +1,7 @@
 import clientIdConfig from './ClientId';
 
 const clientId = clientIdConfig.clientId;
-const redirectUri = 'https://spurious-moon.surge.sh/';
+const redirectUri = 'http://spurious-moon.surge.sh';
 
 let accessToken;
 
