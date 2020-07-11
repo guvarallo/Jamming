@@ -50,3 +50,11 @@ h2 {
     flex-direction: column;
   }
 }
+
+.swal-button {
+  background-color: #6c41ec;
+}
+
+.swal-overlay {
+  background-color: rgba(108, 65, 236, 0.45);
+}

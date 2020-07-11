@@ -20,3 +20,4 @@ Test it live at: https://jammingcode-app.surge.sh/
 * [React](https://reactjs.org/)
 * [Surge](https://surge.sh/) - Used to deploy
 * [React Spinners](https://github.com/davidhu2000/react-spinners) - Used for loading effects
+* [SweetAlert](https://sweetalert.js.org/) - Used for alert box

@@ -4,6 +4,7 @@ import SearchBar from '../SearchBar/SearchBar';
 import SearchResults from '../SearchResults/SearchResults';
 import Playlist from '../Playlist/Playlist';
 import Spotify from '../../util/Spotify';
+import Swal from 'sweetalert';
 
 
 function App() {
@@ -35,14 +36,15 @@ function App() {
 
   function savePlaylist() {
     setIsLoading(true);
+    // Forced a setTimout just to show the loader effect
     setTimeout(() => {
       const trackUris = playlistTracks.map(track => track.uri);
       Spotify.savePlaylist(playlistName, trackUris)
       .then(setPlaylistName('New Playlist'))
       .then(setPlaylistTracks([]))
-      .then(alert('Playlist successfully saved to your library!'))
+      .then(Swal("Playlist saved!", "Check it on your Spotify account.", "success"))
       .then(setIsLoading(false));
-    }, 0);
+    }, 2000);
   }
 
   function search(term) {
