@@ -5,10 +5,12 @@ import SearchResults from '../SearchResults/SearchResults';
 import Playlist from '../Playlist/Playlist';
 import Spotify from '../../util/Spotify';
 
+
 function App() {
   const [searchResults, setSearchResults] = useState([]);
   const [playlistName, setPlaylistName] = useState('My Playlist');
   const [playlistTracks, setPlaylistTracks] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     
@@ -32,11 +34,15 @@ function App() {
   }
 
   function savePlaylist() {
-    const trackUris = playlistTracks.map(track => track.uri);
-    Spotify.savePlaylist(playlistName, trackUris)
-    .then(setPlaylistName('New Playlist'))
-    .then(setPlaylistTracks([]))
-    .then(alert('Playlist successfully saved to your library!'));
+    setIsLoading(true);
+    setTimeout(() => {
+      const trackUris = playlistTracks.map(track => track.uri);
+      Spotify.savePlaylist(playlistName, trackUris)
+      .then(setPlaylistName('New Playlist'))
+      .then(setPlaylistTracks([]))
+      .then(alert('Playlist successfully saved to your library!'))
+      .then(setIsLoading(false));
+    }, 0);
   }
 
   function search(term) {
@@ -59,6 +65,7 @@ function App() {
             onRemove={removeTrack} 
             onNameChange={updatePlaylistName} 
             onSave={savePlaylist}
+            isLoading={isLoading}
           />
         </div>
       </div>
