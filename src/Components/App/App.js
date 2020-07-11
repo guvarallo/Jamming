@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './App.css';
 import SearchBar from '../SearchBar/SearchBar';
 import SearchResults from '../SearchResults/SearchResults';
@@ -9,6 +9,10 @@ function App() {
   const [searchResults, setSearchResults] = useState([]);
   const [playlistName, setPlaylistName] = useState('My Playlist');
   const [playlistTracks, setPlaylistTracks] = useState([]);
+
+  useEffect(() => {
+    
+  })
 
   function addTrack(track) {
     if (playlistTracks.find(el => el.id === track.id)) {
@@ -30,10 +34,8 @@ function App() {
   function savePlaylist() {
     const trackUris = playlistTracks.map(track => track.uri);
     Spotify.savePlaylist(playlistName, trackUris)
-    .then(() => {
-      setPlaylistName('New Playlist');
-      setPlaylistTracks([]);
-    })
+    .then(setPlaylistName('New Playlist'))
+    .then(setPlaylistTracks([]))
     .then(alert('Playlist successfully saved to your library!'));
   }
 

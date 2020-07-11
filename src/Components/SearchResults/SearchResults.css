@@ -1,4 +1,6 @@
 .SearchResults {
+  align-items: center;
+  text-align: center;
   width: 50%;
   height: 950px;
   overflow-y: scroll;
